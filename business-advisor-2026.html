@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venture Advisor — Trey Oladejo-Avognon</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0F0F0E;
+  --ink-mid: #1C1C1A;
+  --ink-soft: #2E2E2B;
+  --copper: #B5651D;
+  --copper-light: #D4874A;
+  --copper-pale: #F5EDE4;
+  --copper-faint: #FBF6F1;
+  --sage: #4A6741;
+  --sage-light: #6B9366;
+  --sage-pale: #EBF2E8;
+  --slate: #3D5066;
+  --slate-pale: #E8EDF3;
+  --cream: #F9F5EF;
+  --white: #FFFFFF;
+  --border: rgba(15,15,14,0.09);
+  --border-copper: rgba(181,101,29,0.22);
+  --text-primary: #0F0F0E;
+  --text-secondary: #4A4A45;
+  --text-muted: #8A8A82;
+  --shadow: 0 2px 16px rgba(15,15,14,0.07);
+  --shadow-lg: 0 8px 40px rgba(15,15,14,0.13);
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--text-primary);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.header-texture {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(181,101,29,0.03) 0px, rgba(181,101,29,0.03) 1px, transparent 1px, transparent 12px),
+    repeating-linear-gradient(-45deg, rgba(181,101,29,0.02) 0px, rgba(181,101,29,0.02) 1px, transparent 1px, transparent 12px);
+}
+.header-glow {
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(181,101,29,0.12) 0%, transparent 70%);
+  top: -100px; right: -80px;
+  pointer-events: none;
+}
+.header-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 2rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.header-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.header-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--copper), var(--copper-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.header-title em {
+  color: var(--copper-light);
+  font-style: italic;
+}
+.header-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.header-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.header-badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 13px;
+  border-radius: 20px;
+  border: 1px solid;
+  letter-spacing: 0.04em;
+}
+.badge-copper {
+  background: rgba(181,101,29,0.15);
+  color: var(--copper-light);
+  border-color: rgba(181,101,29,0.3);
+}
+.badge-sage {
+  background: rgba(74,103,65,0.15);
+  color: #8BBF82;
+  border-color: rgba(74,103,65,0.3);
+}
+.badge-slate {
+  background: rgba(61,80,102,0.2);
+  color: #8BAAC5;
+  border-color: rgba(61,80,102,0.35);
+}
+
+/* ── NAV ── */
+.nav {
+  background: var(--ink-mid);
+  border-bottom: 1px solid rgba(181,101,29,0.12);
+}
+.nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-tab {
+  padding: 0.9rem 1.4rem;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  white-space: nowrap;
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+}
+.nav-tab:hover { color: rgba(255,255,255,0.7); }
+.nav-tab.active { color: var(--copper-light); border-bottom-color: var(--copper-light); }
+
+/* ── MAIN ── */
+.main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.section { display: none; }
+.section.active { display: block; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--white);
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow);
+}
+.card + .card { margin-top: 1rem; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin-bottom: 0.75rem;
+}
+.divider { border: none; border-top: 1px solid var(--border); margin: 1.25rem 0; }
+
+/* ── HOME / COMMAND CENTER ── */
+.command-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+@media (max-width: 600px) { .command-grid { grid-template-columns: 1fr; } }
+
+.command-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+.command-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  border-radius: 3px 0 0 3px;
+}
+.command-card.copper::before { background: var(--copper); }
+.command-card.sage::before { background: var(--sage); }
+.command-card.slate::before { background: var(--slate); }
+.command-card.ink::before { background: var(--ink-soft); }
+.command-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+.command-icon { font-size: 22px; margin-bottom: 8px; }
+.command-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.command-desc { font-size: 12px; color: var(--text-muted); line-height: 1.45; }
+
+/* ── IDEA VALIDATOR ── */
+.validator-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-label { font-size: 12px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; }
+.form-input, .form-select, .form-textarea {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--copper); }
+.form-textarea { resize: vertical; min-height: 90px; line-height: 1.55; }
+.form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8A82' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+.btn {
+  padding: 11px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+  letter-spacing: 0.01em;
+}
+.btn-copper {
+  background: var(--copper);
+  color: white;
+}
+.btn-copper:hover { background: var(--copper-light); }
+.btn-copper:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-outline {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover { background: var(--cream); }
+
+/* ── RESULTS ── */
+.result-box {
+  background: var(--copper-faint);
+  border: 1px solid var(--border-copper);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.25rem;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  display: none;
+}
+.result-box.visible { display: block; }
+.result-loading {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 13px;
+  margin-top: 1rem;
+  display: none;
+}
+.result-loading.visible { display: block; }
+
+/* ── AI CHAT ── */
+.chat-wrap {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.chat-header {
+  background: var(--ink);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.chat-avatar {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--copper), var(--copper-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.chat-header-text { flex: 1; }
+.chat-header-name { font-size: 14px; font-weight: 600; color: white; }
+.chat-header-status { font-size: 11px; color: rgba(255,255,255,0.4); }
+.chat-online { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #4CAF50; margin-right: 4px; }
+
+.chat-messages {
+  min-height: 320px;
+  max-height: 460px;
+  overflow-y: auto;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.chat-msg {
+  max-width: 88%;
+  padding: 11px 15px;
+  border-radius: 16px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.chat-msg.user {
+  background: var(--ink);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.chat-msg.assistant {
+  background: var(--copper-faint);
+  color: var(--text-primary);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  border: 1px solid var(--border-copper);
+}
+.chat-msg.thinking {
+  background: var(--cream);
+  color: var(--text-muted);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  font-style: italic;
+  font-size: 13px;
+}
+.chat-input-area {
+  border-top: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  background: var(--cream);
+}
+.chat-ta {
+  flex: 1;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  outline: none;
+  resize: none;
+  min-height: 44px;
+  max-height: 130px;
+  line-height: 1.5;
+}
+.chat-ta:focus { border-color: var(--copper); }
+.chat-send-btn {
+  width: 44px; height: 44px;
+  background: var(--copper);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.chat-send-btn:hover { background: var(--copper-light); }
+.chat-send-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ── QUICK PROMPTS ── */
+.quick-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.25rem;
+}
+.chip {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border-copper);
+  background: var(--copper-faint);
+  color: var(--copper);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'Outfit', sans-serif;
+}
+.chip:hover { background: var(--copper); color: white; border-color: var(--copper); }
+
+/* ── FRAMEWORKS ── */
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.framework-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Outfit', sans-serif;
+}
+.framework-card:hover {
+  border-color: var(--border-copper);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+.framework-icon { font-size: 24px; margin-bottom: 10px; }
+.framework-name { font-size: 13.5px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+.framework-desc { font-size: 12px; color: var(--text-muted); line-height: 1.45; }
+.framework-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.tag-validate { background: var(--copper-pale); color: var(--copper); }
+.tag-plan { background: var(--sage-pale); color: var(--sage); }
+.tag-grow { background: var(--slate-pale); color: var(--slate); }
+
+/* ── GTM CANVAS ── */
+.canvas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 560px) { .canvas-grid { grid-template-columns: 1fr; } }
+.canvas-cell {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+}
+.canvas-cell-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.canvas-cell-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  resize: none;
+  min-height: 60px;
+  line-height: 1.55;
+}
+
+/* ── FINANCIAL ── */
+.fin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 1rem; }
+.fin-cell {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+.fin-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+.fin-val { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text-primary); }
+.fin-val.positive { color: var(--sage); }
+.fin-val.negative { color: #B94040; }
+
+.fin-input-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.fin-input-group { display: flex; flex-direction: column; gap: 5px; }
+.fin-input-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.fin-input {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  outline: none;
+}
+.fin-input:focus { border-color: var(--copper); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-texture"></div>
+  <div class="header-glow"></div>
+  <div class="header-inner">
+    <div class="header-wordmark">
+      <div class="header-icon">◈</div>
+      <div>
+        <div class="header-title">Venture <em>Advisor</em></div>
+        <div class="header-sub">Trey Oladejo-Avognon &nbsp;·&nbsp; Business & Entrepreneurial Intelligence</div>
+      </div>
+    </div>
+    <div class="header-badges">
+      <span class="header-badge badge-copper">Idea Validation</span>
+      <span class="header-badge badge-sage">Business Planning</span>
+      <span class="header-badge badge-slate">GTM Strategy</span>
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <div class="nav-inner">
+    <button class="nav-tab active" onclick="showTab('home')">Command Center</button>
+    <button class="nav-tab" onclick="showTab('advisor')">AI Advisor</button>
+    <button class="nav-tab" onclick="showTab('validator')">Idea Validator</button>
+    <button class="nav-tab" onclick="showTab('frameworks')">Frameworks</button>
+    <button class="nav-tab" onclick="showTab('financials')">Financial Model</button>
+    <button class="nav-tab" onclick="showTab('gtm')">GTM Canvas</button>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- HOME -->
+  <div class="section active" id="tab-home">
+    <div style="margin-bottom:1.25rem;">
+      <div class="section-label">What would you like to work on today?</div>
+      <div class="command-grid">
+        <button class="command-card copper" onclick="showTabAndPrompt('advisor', 'I have a new business idea I want to explore. Help me think through it strategically.')">
+          <div class="command-icon">💡</div>
+          <div class="command-name">Explore a Business Idea</div>
+          <div class="command-desc">Pressure-test concepts, identify opportunities, and assess market potential before you invest time or money.</div>
+        </button>
+        <button class="command-card sage" onclick="showTabAndPrompt('advisor', 'Help me build a business plan outline for my venture. Start by asking me the key questions you need.')">
+          <div class="command-icon">📋</div>
+          <div class="command-name">Build a Business Plan</div>
+          <div class="command-desc">Structure your venture — vision, market, model, operations, financials, and milestones — into a clear plan.</div>
+        </button>
+        <button class="command-card slate" onclick="showTabAndPrompt('advisor', 'Help me design a go-to-market strategy. Ask me what you need to know about my product and target customer.')">
+          <div class="command-icon">🚀</div>
+          <div class="command-name">Design a GTM Strategy</div>
+          <div class="command-desc">Define your target customer, positioning, channels, pricing, and launch playbook.</div>
+        </button>
+        <button class="command-card ink" onclick="showTabAndPrompt('advisor', 'I want to start a consulting side hustle alongside my PM career. Help me identify the best angles given my background.')">
+          <div class="command-icon">🧠</div>
+          <div class="command-name">Launch a Side Hustle</div>
+          <div class="command-desc">Leverage your 18 years of PM and technical consulting experience to generate income on your terms.</div>
+        </button>
+        <button class="command-card copper" onclick="showTab('validator')">
+          <div class="command-icon">🔬</div>
+          <div class="command-name">Validate an Idea</div>
+          <div class="command-desc">Run a structured validation framework — problem, customer, competition, model, and risk analysis.</div>
+        </button>
+        <button class="command-card sage" onclick="showTab('financials')">
+          <div class="command-icon">📊</div>
+          <div class="command-name">Model the Financials</div>
+          <div class="command-desc">Run revenue projections, break-even analysis, and unit economics for any venture concept.</div>
+        </button>
+        <button class="command-card slate" onclick="showTab('gtm')">
+          <div class="command-icon">🗺</div>
+          <div class="command-name">Fill the GTM Canvas</div>
+          <div class="command-desc">Map your customer segment, value prop, channels, pricing, and growth levers on a single canvas.</div>
+        </button>
+        <button class="command-card ink" onclick="showTab('frameworks')">
+          <div class="command-icon">⚙</div>
+          <div class="command-name">Use a Framework</div>
+          <div class="command-desc">Apply proven strategic tools: Lean Canvas, SWOT, Jobs-to-be-Done, Porter's 5 Forces, and more.</div>
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Your Entrepreneurial Edge</div>
+      <div style="font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem;">
+        As a Senior Technical Product Manager with 18 years of software experience, you sit at a rare intersection: you understand how to build products, manage stakeholders, analyze data, and drive strategy — all at once. That's not just a career asset. It's a founder's superpower.
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
+        <div style="background:var(--copper-faint);border:1px solid var(--border-copper);border-radius:12px;padding:1rem;">
+          <div style="font-size:11px;font-weight:600;color:var(--copper);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:6px;">Technical Credibility</div>
+          <div style="font-size:13px;color:var(--text-secondary);">You can build or direct engineering — giving you real leverage in tech-enabled ventures where most non-technical founders hit walls.</div>
+        </div>
+        <div style="background:var(--sage-pale);border:1px solid rgba(74,103,65,0.2);border-radius:12px;padding:1rem;">
+          <div style="font-size:11px;font-weight:600;color:var(--sage);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:6px;">Market Insight</div>
+          <div style="font-size:13px;color:var(--text-secondary);">10 years of PM and consulting means you understand what customers actually pay for — not what sounds good in a pitch.</div>
+        </div>
+        <div style="background:var(--slate-pale);border:1px solid rgba(61,80,102,0.2);border-radius:12px;padding:1rem;">
+          <div style="font-size:11px;font-weight:600;color:var(--slate);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:6px;">Domain Depth</div>
+          <div style="font-size:13px;color:var(--text-secondary);">Fintech, insurance, healthcare-adjacent, SaaS operations — you can credibly enter multiple high-value markets from day one.</div>
+        </div>
+        <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:1rem;">
+          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:6px;">AI-Native Operator</div>
+          <div style="font-size:13px;color:var(--text-secondary);">Claude Code, GitHub, Markdown — you already build AI-assisted workflows. That's a startup efficiency multiplier most founders don't have.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI ADVISOR -->
+  <div class="section" id="tab-advisor">
+    <div class="quick-chips">
+      <button class="chip" onclick="chipPrompt('What side hustle ideas make the most sense for a Senior Technical PM with fintech, AI, and consulting experience?')">Side hustle ideas for my background</button>
+      <button class="chip" onclick="chipPrompt('I want to start a technical PM consulting practice. Help me define my niche, pricing, and how to get my first 3 clients.')">Launch a PM consulting practice</button>
+      <button class="chip" onclick="chipPrompt('What SaaS ideas could I realistically build solo or with a small team, targeting fintech or healthcare?')">SaaS ideas I could build</button>
+      <button class="chip" onclick="chipPrompt('Help me pressure-test this business idea: [describe your idea here]')">Pressure-test an idea</button>
+      <button class="chip" onclick="chipPrompt('What are the most common reasons technical founders fail at the business side, and how should I avoid them?')">Mistakes to avoid as a technical founder</button>
+      <button class="chip" onclick="chipPrompt('How do I find my first paying customer for a B2B product or consulting service?')">Getting my first paying customer</button>
+      <button class="chip" onclick="chipPrompt('What is the fastest path from idea to $10K MRR for a solo technical founder in 2026?')">Fastest path to $10K MRR</button>
+      <button class="chip" onclick="chipPrompt('How do I price a consulting engagement as a senior PM? What models work best?')">Consulting pricing strategy</button>
+    </div>
+
+    <div class="chat-wrap">
+      <div class="chat-header">
+        <div class="chat-avatar">◈</div>
+        <div class="chat-header-text">
+          <div class="chat-header-name">Venture Advisor</div>
+          <div class="chat-header-status"><span class="chat-online"></span>Ready to advise</div>
+        </div>
+      </div>
+      <div class="chat-messages" id="chat-msgs">
+        <div class="chat-msg assistant">Welcome back, Trey. I'm your Venture Advisor — fully loaded with your background as a Senior Technical PM with 18 years of software experience, domain depth in fintech, insurance, and healthcare-adjacent markets, and hands-on AI workflow experience.
+
+I can help you validate ideas, build business plans, design GTM strategies, and think through your side hustle or startup path. Where do you want to start?</div>
+      </div>
+      <div class="chat-input-area">
+        <textarea class="chat-ta" id="chat-input" placeholder="Ask me anything about your business ideas, strategy, or ventures..." onkeydown="handleKey(event)"></textarea>
+        <button class="chat-send-btn" id="send-btn" onclick="sendMsg()">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- IDEA VALIDATOR -->
+  <div class="section" id="tab-validator">
+    <div class="card">
+      <div class="card-title">Idea Validation Framework</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-bottom:1.25rem;">Describe your idea below and get a structured validation analysis across problem, customer, competition, business model, and risk.</div>
+      <div class="validator-form">
+        <div class="form-group">
+          <div class="form-label">What's the business idea?</div>
+          <textarea class="form-textarea" id="v-idea" placeholder="Describe your idea in 2–3 sentences. What does it do, who is it for, and how does it work?" style="min-height:80px;"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <div class="form-label">Target Customer</div>
+            <input class="form-input" id="v-customer" placeholder="e.g. Mid-market SaaS companies, solo consultants, SMB retailers...">
+          </div>
+          <div class="form-group">
+            <div class="form-label">Domain / Industry</div>
+            <select class="form-select" id="v-domain">
+              <option value="">Select domain...</option>
+              <option>Fintech / Banking</option>
+              <option>Healthcare / Health Tech</option>
+              <option>SaaS / B2B Software</option>
+              <option>E-commerce / Consumer</option>
+              <option>Consulting / Professional Services</option>
+              <option>AI / Data Products</option>
+              <option>Insurance / Insurtech</option>
+              <option>Real Estate / PropTech</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <div class="form-label">Problem Being Solved</div>
+            <input class="form-input" id="v-problem" placeholder="What pain point or gap does this address?">
+          </div>
+          <div class="form-group">
+            <div class="form-label">How You'd Make Money</div>
+            <select class="form-select" id="v-model">
+              <option value="">Select model...</option>
+              <option>Subscription (SaaS)</option>
+              <option>Consulting / Retainer</option>
+              <option>Transaction / Commission</option>
+              <option>Marketplace</option>
+              <option>One-time purchase</option>
+              <option>Freemium → Paid</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-label">What's your unfair advantage? (optional)</div>
+          <input class="form-input" id="v-advantage" placeholder="Domain expertise, network, technology, IP, existing customers...">
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn btn-copper" id="validate-btn" onclick="runValidation()">Run Validation Analysis ↗</button>
+          <button class="btn btn-outline" onclick="clearValidator()">Clear</button>
+        </div>
+      </div>
+      <div class="result-loading" id="v-loading">Analyzing your idea across 5 validation dimensions...</div>
+      <div class="result-box" id="v-result"></div>
+    </div>
+  </div>
+
+  <!-- FRAMEWORKS -->
+  <div class="section" id="tab-frameworks">
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="card-title">Strategic Business Frameworks</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-bottom:1.25rem;">Click any framework to open it in the AI Advisor with a tailored prompt ready for your venture context.</div>
+      <div class="framework-grid">
+        <div class="framework-card" onclick="frameworkPrompt('lean-canvas')">
+          <div class="framework-icon">🗂</div>
+          <div class="framework-name">Lean Canvas</div>
+          <div class="framework-desc">Map your venture across problem, solution, UVP, customer segments, channels, revenue, and cost structure.</div>
+          <span class="framework-tag tag-validate">Validate</span>
+        </div>
+        <div class="framework-card" onclick="frameworkPrompt('jtbd')">
+          <div class="framework-icon">🎯</div>
+          <div class="framework-name">Jobs-to-Be-Done</div>
+          <div class="framework-desc">Understand what job your customer is hiring your product to do — and who you're really competing with.</div>
+          <span class="framework-tag tag-validate">Validate</span>
+        </div>
+        <div class="framework-card" onclick="frameworkPrompt('swot')">
+          <div class="framework-icon">⚖</div>
+          <div class="framework-name">SWOT Analysis</div>
+          <div class="framework-desc">Map internal strengths and weaknesses against external opportunities and threats for your venture.</div>
+          <span class="framework-tag tag-plan">Plan</span>
+        </div>
+        <div class="framework-card" onclick="frameworkPrompt('porters5')">
+          <div class="framework-icon">🏛</div>
+          <div class="framework-name">Porter's 5 Forces</div>
+          <div class="framework-desc">Analyze competitive dynamics: rivalry, new entrants, substitutes, buyer power, and supplier power.</div>
+          <span class="framework-tag tag-plan">Plan</span>
+        </div>
+        <div class="framework-card" onclick="frameworkPrompt('tam-sam-som')">
+          <div class="framework-icon">📐</div>
+          <div class="framework-name">TAM / SAM / SOM</div>
+          <div class="framework-desc">Size your total, serviceable, and obtainable market to validate scale and set realistic targets.</div>
+          <span class="framework-tag tag-validate">Validate</span>
+        </div>
+        <div class="framework-card" onclick="frameworkPrompt('okrs')">
+          <div class="framework-icon">🏁</div>
+          <div class="framework-name">OKR Framework</div>
+          <div class="framework-desc">Define Objectives and Key Results for your venture's first 90 days, 6 months, and year one.</div>
+          <span class="framework-tag tag-plan">Plan</span>
+        </div>
+        <div class="framework-card" onclick="frameworkPrompt('product-market-fit')">
+          <div class="framework-icon">🔗</div>
+          <div class="framework-name">Product-Market Fit</div>
+          <div class="framework-desc">Define what PMF looks like for your venture and build a roadmap to reach it within 6 months.</div>
+          <span class="framework-tag tag-grow">Grow</span>
+        </div>
+        <div class="framework-card" onclick="frameworkPrompt('growth-loops')">
+          <div class="framework-icon">🔄</div>
+          <div class="framework-name">Growth Loops</div>
+          <div class="framework-desc">Design self-reinforcing acquisition loops — viral, content, sales, or product-led — for compounding growth.</div>
+          <span class="framework-tag tag-grow">Grow</span>
+        </div>
+        <div class="framework-card" onclick="frameworkPrompt('pricing-strategy')">
+          <div class="framework-icon">💰</div>
+          <div class="framework-name">Pricing Strategy</div>
+          <div class="framework-desc">Choose the right pricing model — value-based, competitive, cost-plus, freemium — and set your tiers.</div>
+          <span class="framework-tag tag-grow">Grow</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINANCIAL MODEL -->
+  <div class="section" id="tab-financials">
+    <div class="card">
+      <div class="card-title">Revenue & Break-Even Model</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-bottom:1.25rem;">Enter your assumptions below to model revenue, costs, and break-even month.</div>
+      <div class="fin-input-row">
+        <div class="fin-input-group">
+          <div class="fin-input-label">Monthly Price Per Customer ($)</div>
+          <input class="fin-input" type="number" id="f-price" value="500" oninput="calcFinancials()">
+        </div>
+        <div class="fin-input-group">
+          <div class="fin-input-label">Starting Customers (Mo 1)</div>
+          <input class="fin-input" type="number" id="f-start" value="2" oninput="calcFinancials()">
+        </div>
+        <div class="fin-input-group">
+          <div class="fin-input-label">New Customers / Month</div>
+          <input class="fin-input" type="number" id="f-growth" value="3" oninput="calcFinancials()">
+        </div>
+        <div class="fin-input-group">
+          <div class="fin-input-label">Monthly Churn Rate (%)</div>
+          <input class="fin-input" type="number" id="f-churn" value="5" oninput="calcFinancials()">
+        </div>
+        <div class="fin-input-group">
+          <div class="fin-input-label">Monthly Fixed Costs ($)</div>
+          <input class="fin-input" type="number" id="f-fixed" value="2000" oninput="calcFinancials()">
+        </div>
+        <div class="fin-input-group">
+          <div class="fin-input-label">Cost Per Customer / Mo ($)</div>
+          <input class="fin-input" type="number" id="f-cogs" value="50" oninput="calcFinancials()">
+        </div>
+      </div>
+      <div class="fin-grid" id="fin-metrics"></div>
+      <div style="margin-top:1rem;">
+        <div class="section-label">12-Month Revenue Projection</div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:12.5px;" id="fin-table"></table>
+        </div>
+      </div>
+      <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-copper" onclick="analyzeFinancials()">Get AI Financial Analysis ↗</button>
+      </div>
+      <div class="result-loading" id="fin-loading">Analyzing your financial model...</div>
+      <div class="result-box" id="fin-result"></div>
+    </div>
+  </div>
+
+  <!-- GTM CANVAS -->
+  <div class="section" id="tab-gtm">
+    <div class="card">
+      <div class="card-title">Go-To-Market Canvas</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-bottom:1.25rem;">Fill in your GTM strategy below, then hit Analyze for AI-powered recommendations.</div>
+      <div class="canvas-grid">
+        <div class="canvas-cell">
+          <div class="canvas-cell-label">Target Customer Segment</div>
+          <textarea class="canvas-cell-input" id="g-customer" placeholder="Who exactly is your buyer? Be specific — job title, company size, industry, pain intensity..."></textarea>
+        </div>
+        <div class="canvas-cell">
+          <div class="canvas-cell-label">Unique Value Proposition</div>
+          <textarea class="canvas-cell-input" id="g-uvp" placeholder="What do you do, for whom, and what's the specific outcome? One sentence."></textarea>
+        </div>
+        <div class="canvas-cell">
+          <div class="canvas-cell-label">Primary Acquisition Channel</div>
+          <textarea class="canvas-cell-input" id="g-channel" placeholder="How will your first 10 customers find you? LinkedIn outreach, content, referrals, cold email, partnerships..."></textarea>
+        </div>
+        <div class="canvas-cell">
+          <div class="canvas-cell-label">Pricing & Revenue Model</div>
+          <textarea class="canvas-cell-input" id="g-pricing" placeholder="How do you charge? Monthly SaaS, project retainer, per seat, transaction fee... and at what price point?"></textarea>
+        </div>
+        <div class="canvas-cell">
+          <div class="canvas-cell-label">Competitive Differentiation</div>
+          <textarea class="canvas-cell-input" id="g-diff" placeholder="Why will customers choose you over alternatives? What's your unfair advantage?"></textarea>
+        </div>
+        <div class="canvas-cell">
+          <div class="canvas-cell-label">90-Day Launch Goal</div>
+          <textarea class="canvas-cell-input" id="g-goal" placeholder="What does success look like in 90 days? First paying customer, $X MRR, 10 pilots, 100 signups..."></textarea>
+        </div>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-copper" onclick="analyzeGTM()">Analyze My GTM Strategy ↗</button>
+        <button class="btn btn-outline" onclick="clearGTM()">Clear Canvas</button>
+      </div>
+      <div class="result-loading" id="gtm-loading">Analyzing your go-to-market strategy...</div>
+      <div class="result-box" id="gtm-result"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const SYSTEM = `You are an elite business and entrepreneurial advisor for Trey Oladejo-Avognon. You combine the sharpness of a top-tier VC analyst, the strategic depth of a McKinsey partner, and the practical wisdom of a serial founder. You are direct, insightful, and action-oriented — no fluff, no generic advice.
+
+TREY'S BACKGROUND (always factor this in):
+- Senior Technical Product Manager, 18 years of software experience, 10 in PM and technical consulting
+- Deep domain expertise: Fintech (JP Morgan Chase, Barclays Bank UK clients), Insurance/Insurtech (Brightstar/Likewize device protection), Healthcare-adjacent platforms
+- 11 years hands-on SQL, backend payment integrations, PCI compliance
+- AI-native operator: uses Claude Code, GitHub, Markdown daily for workflow automation and product builds
+- Agile/SAFe delivery, cross-functional leadership, C-suite stakeholder management
+- Located in Atlanta metro (Mountain Park, GA)
+- Currently exploring: side hustles alongside his PM career, new venture ideas, and entrepreneurial opportunities
+
+ADVISING PRINCIPLES:
+- Always ground advice in Trey's specific background and leverage points — no generic entrepreneur advice
+- Be specific: give frameworks, numbers, timelines, concrete next steps
+- Challenge assumptions and pressure-test ideas — be a thinking partner, not a cheerleader
+- When suggesting business ideas, focus on Trey's unfair advantages: technical depth, fintech/insurance domain, AI workflow skills, PM expertise
+- For side hustles: prioritize low-overhead, high-margin opportunities he can run alongside full-time work
+- For ventures: identify where his unique background creates competitive moats others can't easily replicate
+- Always end with 2-3 specific, actionable next steps`;
+
+let history = [];
+let msgId = 0;
+
+function showTab(name) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  const tabs = ['home','advisor','validator','frameworks','financials','gtm'];
+  const idx = tabs.indexOf(name);
+  if (idx >= 0) document.querySelectorAll('.nav-tab')[idx].classList.add('active');
+}
+
+function showTabAndPrompt(tab, prompt) {
+  showTab(tab);
+  document.getElementById('chat-input').value = prompt;
+  sendMsg();
+}
+
+function chipPrompt(text) {
+  document.getElementById('chat-input').value = text;
+  sendMsg();
+}
+
+function appendMsg(role, text) {
+  const id = 'msg-' + (++msgId);
+  const box = document.getElementById('chat-msgs');
+  const el = document.createElement('div');
+  el.id = id;
+  el.className = 'chat-msg ' + role;
+  el.textContent = text;
+  box.appendChild(el);
+  box.scrollTop = box.scrollHeight;
+  return id;
+}
+function removeEl(id) { const e = document.getElementById(id); if(e) e.remove(); }
+
+async function sendMsg() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  input.style.height = 'auto';
+  appendMsg('user', text);
+  history.push({ role: 'user', content: text });
+  const btn = document.getElementById('send-btn');
+  btn.disabled = true;
+  const lid = appendMsg('thinking', 'Thinking through this...');
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: SYSTEM, messages: history })
+    });
+    const data = await res.json();
+    const reply = data.content?.map(c => c.text||'').join('') || 'Sorry, something went wrong. Please try again.';
+    removeEl(lid);
+    appendMsg('assistant', reply);
+    history.push({ role: 'assistant', content: reply });
+  } catch(e) {
+    removeEl(lid);
+    appendMsg('assistant', 'Connection error — please try again.');
+  }
+  btn.disabled = false;
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); }
+  const ta = e.target;
+  ta.style.height = 'auto';
+  ta.style.height = Math.min(ta.scrollHeight, 130) + 'px';
+}
+
+async function callAPI(prompt, loadingId, resultId, btnId) {
+  const loading = document.getElementById(loadingId);
+  const result = document.getElementById(resultId);
+  const btn = btnId ? document.getElementById(btnId) : null;
+  loading.classList.add('visible');
+  result.classList.remove('visible');
+  if(btn) btn.disabled = true;
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: SYSTEM, messages: [{ role: 'user', content: prompt }] })
+    });
+    const data = await res.json();
+    const text = data.content?.map(c => c.text||'').join('') || 'Unable to generate analysis. Please try again.';
+    result.textContent = text;
+    result.classList.add('visible');
+  } catch(e) {
+    result.textContent = 'Connection error — please try again.';
+    result.classList.add('visible');
+  }
+  loading.classList.remove('visible');
+  if(btn) btn.disabled = false;
+}
+
+async function runValidation() {
+  const idea = document.getElementById('v-idea').value.trim();
+  const customer = document.getElementById('v-customer').value.trim();
+  const domain = document.getElementById('v-domain').value;
+  const problem = document.getElementById('v-problem').value.trim();
+  const model = document.getElementById('v-model').value;
+  const advantage = document.getElementById('v-advantage').value.trim();
+  if (!idea) { alert('Please describe your business idea first.'); return; }
+  const prompt = `Run a structured idea validation analysis for the following business concept. Be rigorous, direct, and specific — highlight both the real opportunities AND the real risks.
+
+IDEA: ${idea}
+TARGET CUSTOMER: ${customer || 'Not specified'}
+DOMAIN: ${domain || 'Not specified'}
+PROBLEM BEING SOLVED: ${problem || 'Not specified'}
+REVENUE MODEL: ${model || 'Not specified'}
+UNFAIR ADVANTAGE: ${advantage || 'Not specified'}
+
+Structure your analysis across these 5 dimensions:
+1. PROBLEM VALIDITY — Is this a real, painful, frequent problem worth solving?
+2. CUSTOMER CLARITY — Is the target customer well-defined and reachable?
+3. COMPETITIVE LANDSCAPE — Who else is solving this and what's the differentiation gap?
+4. BUSINESS MODEL VIABILITY — Can this generate meaningful revenue at scale?
+5. RISK FACTORS — What are the top 3 risks that could kill this before it starts?
+
+End with an OVERALL VALIDATION SCORE (1–10) and a clear GO / REFINE / PASS recommendation with a one-paragraph rationale. Then give 3 specific next steps Trey should take in the next 2 weeks to validate or kill this idea quickly.`;
+  await callAPI(prompt, 'v-loading', 'v-result', 'validate-btn');
+}
+
+function clearValidator() {
+  ['v-idea','v-customer','v-problem','v-advantage'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('v-domain').value = '';
+  document.getElementById('v-model').value = '';
+  document.getElementById('v-result').classList.remove('visible');
+}
+
+function frameworkPrompt(fw) {
+  const prompts = {
+    'lean-canvas': 'Walk me through a Lean Canvas for a venture idea I want to explore. Ask me the key questions across each block — problem, solution, UVP, unfair advantage, customer segments, channels, revenue streams, cost structure, and key metrics — and build the canvas with me.',
+    'jtbd': 'Help me apply the Jobs-to-Be-Done framework to my business idea. Ask me about the functional, emotional, and social jobs my customer is trying to get done, who I\'m really competing with, and what outcomes they\'re measuring.',
+    'swot': 'Run a SWOT analysis for my venture. Ask me about my idea, then map the strengths and weaknesses (internal) against the opportunities and threats (external) — and give me strategic recommendations based on the intersections.',
+    'porters5': 'Help me analyze my target market using Porter\'s Five Forces: competitive rivalry, threat of new entrants, threat of substitutes, bargaining power of buyers, and bargaining power of suppliers. Ask me what industry and business idea I\'m analyzing.',
+    'tam-sam-som': 'Help me size my market using the TAM / SAM / SOM framework. Ask me about my business idea and target customer, then help me estimate Total Addressable Market, Serviceable Addressable Market, and Serviceable Obtainable Market with realistic assumptions.',
+    'okrs': 'Help me define OKRs for my new venture. Ask me about my business idea and where I am today, then help me set 3-5 Objectives with 2-3 measurable Key Results each for the first 90 days, 6 months, and year one.',
+    'product-market-fit': 'Help me define what product-market fit looks like for my venture and build a roadmap to reach it. Ask me about my idea, target customer, and current stage, then give me a concrete PMF definition and 6-month roadmap.',
+    'growth-loops': 'Help me design growth loops for my venture. Explain viral, content, sales, and product-led loops, then ask me about my business model and target customer to identify which loop type fits best and how to build it.',
+    'pricing-strategy': 'Help me develop a pricing strategy for my venture. Walk me through value-based, competitive, cost-plus, and freemium models, ask me about my customer and market, then recommend the right model and specific price points with rationale.'
+  };
+  showTab('advisor');
+  document.getElementById('chat-input').value = prompts[fw] || 'Help me apply this strategic framework to my venture idea.';
+  sendMsg();
+}
+
+function calcFinancials() {
+  const price = parseFloat(document.getElementById('f-price').value) || 0;
+  const start = parseFloat(document.getElementById('f-start').value) || 0;
+  const growth = parseFloat(document.getElementById('f-growth').value) || 0;
+  const churn = (parseFloat(document.getElementById('f-churn').value) || 0) / 100;
+  const fixed = parseFloat(document.getElementById('f-fixed').value) || 0;
+  const cogs = parseFloat(document.getElementById('f-cogs').value) || 0;
+
+  let customers = start, totalRev = 0, breakEvenMonth = null;
+  const rows = [];
+  for (let m = 1; m <= 12; m++) {
+    const rev = customers * price;
+    const cost = fixed + customers * cogs;
+    const profit = rev - cost;
+    totalRev += rev;
+    if (profit > 0 && breakEvenMonth === null) breakEvenMonth = m;
+    rows.push({ m, customers: Math.round(customers), rev, cost, profit });
+    customers = customers * (1 - churn) + growth;
+    customers = Math.max(0, customers);
+  }
+
+  const lastRow = rows[rows.length - 1];
+  const yr1Rev = totalRev;
+  const mrr12 = lastRow.rev;
+
+  document.getElementById('fin-metrics').innerHTML = `
+    <div class="fin-cell"><div class="fin-label">Month 12 MRR</div><div class="fin-val">$${Math.round(mrr12).toLocaleString()}</div></div>
+    <div class="fin-cell"><div class="fin-label">Year 1 Revenue</div><div class="fin-val">$${Math.round(yr1Rev).toLocaleString()}</div></div>
+    <div class="fin-cell"><div class="fin-label">Month 12 Customers</div><div class="fin-val">${lastRow.customers}</div></div>
+    <div class="fin-cell"><div class="fin-label">Break-Even Month</div><div class="fin-val ${breakEvenMonth ? 'positive' : 'negative'}">${breakEvenMonth ? 'Mo ' + breakEvenMonth : 'Not reached'}</div></div>
+    <div class="fin-cell"><div class="fin-label">Month 12 Profit</div><div class="fin-val ${lastRow.profit >= 0 ? 'positive' : 'negative'}">$${Math.round(lastRow.profit).toLocaleString()}</div></div>
+    <div class="fin-cell"><div class="fin-label">LTV (est.)</div><div class="fin-val">$${churn > 0 ? Math.round((price - cogs) / churn).toLocaleString() : '∞'}</div></div>
+  `;
+
+  const headerStyle = 'padding:6px 10px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--border);';
+  const cellStyle = 'padding:6px 10px;font-size:12.5px;border-bottom:1px solid var(--border);';
+  document.getElementById('fin-table').innerHTML = `
+    <thead><tr>
+      <th style="${headerStyle}">Month</th>
+      <th style="${headerStyle}">Customers</th>
+      <th style="${headerStyle}">Revenue</th>
+      <th style="${headerStyle}">Costs</th>
+      <th style="${headerStyle}">Profit / Loss</th>
+    </tr></thead>
+    <tbody>${rows.map(r => `<tr>
+      <td style="${cellStyle}">Mo ${r.m}</td>
+      <td style="${cellStyle}">${r.customers}</td>
+      <td style="${cellStyle}">$${Math.round(r.rev).toLocaleString()}</td>
+      <td style="${cellStyle}">$${Math.round(r.cost).toLocaleString()}</td>
+      <td style="${cellStyle};color:${r.profit >= 0 ? 'var(--sage)' : '#B94040'};font-weight:500;">$${Math.round(r.profit).toLocaleString()}</td>
+    </tr>`).join('')}</tbody>
+  `;
+}
+
+async function analyzeFinancials() {
+  const price = document.getElementById('f-price').value;
+  const start = document.getElementById('f-start').value;
+  const growth = document.getElementById('f-growth').value;
+  const churn = document.getElementById('f-churn').value;
+  const fixed = document.getElementById('f-fixed').value;
+  const cogs = document.getElementById('f-cogs').value;
+  const prompt = `Analyze the following financial model for a new venture and give Trey specific, actionable advice:
+
+Monthly price per customer: $${price}
+Starting customers (month 1): ${start}
+New customers per month: ${growth}
+Monthly churn rate: ${churn}%
+Monthly fixed costs: $${fixed}
+Cost per customer per month: $${cogs}
+
+Provide:
+1. UNIT ECONOMICS assessment — is the LTV:CAC ratio healthy? What does the gross margin look like?
+2. GROWTH ASSUMPTION REALITY CHECK — are ${growth} new customers per month realistic for a new venture?
+3. CHURN RISK ASSESSMENT — what does ${churn}% monthly churn mean annually and how does it affect LTV?
+4. PATH TO PROFITABILITY — what are the 2-3 levers Trey should pull to reach break-even faster?
+5. BENCHMARKS — how do these numbers compare to healthy SaaS or consulting benchmarks?
+
+Be specific with numbers. End with 3 concrete recommendations to improve this model.`;
+  await callAPI(prompt, 'fin-loading', 'fin-result');
+}
+
+async function analyzeGTM() {
+  const customer = document.getElementById('g-customer').value.trim();
+  const uvp = document.getElementById('g-uvp').value.trim();
+  const channel = document.getElementById('g-channel').value.trim();
+  const pricing = document.getElementById('g-pricing').value.trim();
+  const diff = document.getElementById('g-diff').value.trim();
+  const goal = document.getElementById('g-goal').value.trim();
+  if (!customer && !uvp) { alert('Please fill in at least Target Customer and Value Proposition.'); return; }
+  const prompt = `Analyze this go-to-market strategy and give Trey specific, expert recommendations:
+
+TARGET CUSTOMER: ${customer || 'Not specified'}
+UNIQUE VALUE PROPOSITION: ${uvp || 'Not specified'}
+PRIMARY ACQUISITION CHANNEL: ${channel || 'Not specified'}
+PRICING & REVENUE MODEL: ${pricing || 'Not specified'}
+COMPETITIVE DIFFERENTIATION: ${diff || 'Not specified'}
+90-DAY LAUNCH GOAL: ${goal || 'Not specified'}
+
+Provide:
+1. CUSTOMER SEGMENT ASSESSMENT — is this specific enough? Who exactly should Trey target first (the "beachhead")?
+2. UVP SHARPNESS — is the value proposition compelling and differentiated, or generic?
+3. CHANNEL STRATEGY — is the chosen channel realistic for reaching this customer? What's a better option if not?
+4. PRICING FEEDBACK — is the model and price point right for this customer and market?
+5. GAPS & BLIND SPOTS — what's missing from this GTM that could cause failure?
+6. WEEK-BY-WEEK 30-DAY LAUNCH PLAN — give a concrete action plan for the first month.
+
+Be direct and specific. Use Trey's background (fintech, PM, AI, consulting) to identify unfair advantages he should be leveraging.`;
+  await callAPI(prompt, 'gtm-loading', 'gtm-result');
+}
+
+function clearGTM() {
+  ['g-customer','g-uvp','g-channel','g-pricing','g-diff','g-goal'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('gtm-result').classList.remove('visible');
+}
+
+calcFinancials();
+</script>
+</body>
+</html>
